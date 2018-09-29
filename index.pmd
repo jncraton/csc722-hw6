@@ -1,3 +1,62 @@
-% Title
-% Author
-% August 5th, 2018
+% CSC 722 HW 6
+% Jon Craton
+
+Problem 1
+=========
+
+> In the following table, xi represents the score for the math class and yi represents the score for English class.
+
+```python
+Xi = [95,85,80,70,60]
+yi = [85,95,70,65,70]
+```
+
+Part A
+------
+
+> Find the linear regression for the x and y. (y = mx + b). Please write your whole solution.
+
+Part B
+------
+
+> Find variance of x and variance of y. Please write your whole solution.
+
+2. In the following table, x represents number of the years that an employee works in a company
+and y represent his/her salary.
+a. Find the linear regression for x and y. Please write your whole solution.
+b. Find the variance of x and the variance of y. Please write your whole solution.
+x
+5
+3
+4
+10
+15
+
+Y
+25
+20
+21
+35
+38
+
+3. The following table shows number of absences in a class and the score of the students.
+a. Find the linear regression between x and y. i.e. y = mx + b. Please write your whole
+solution.
+b. Find the variance of x and the variance of y. Please write your whole solution.
+1
+0
+2
+6
+4
+3
+3
+
+85
+80
+70
+55
+90
+90
+95
+
+
