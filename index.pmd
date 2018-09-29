@@ -16,10 +16,109 @@ Part A
 
 > Find the linear regression for the x and y. (y = mx + b). Please write your whole solution.
 
+The idea of linear regression is to find a line of the following form:
+
+$y = mx + b$
+
+`m` and `b' should be found to minimize total distance between the dataset and the line.
+
+The square of the distance between each datapoint and the line can be represented as:
+
+$(yᵢ - mxᵢ - b)²$
+
+The total distance would therefore be:
+
+$D = \sum_{i=1}^{n}(yᵢ - mxᵢ - b)²$
+
+In order to minimize the above equation, we will begin by taking the partial derivatives with respect to `m` and `b`. Let's start with `b`.
+
+${∂D \over ∂b} = {∂ \over ∂b}\sum_{i=1}^{n}(yᵢ - mxᵢ - b)²$
+
+${∂D \over ∂b} = -2(\sum_{i=1}^{n}yᵢ - \sum_{i=1}^{n}mxᵢ - \sum_{i=1}^{n}b)$
+
+${∂D \over ∂b} = -2(\sum_{i=1}^{n}yᵢ - m\sum_{i=1}^{n}xᵢ - nb)$
+
+Now we want to find the minimum by solving for b when the above expression is zero:
+
+${∂D \over ∂m} = 0 = -2(\sum_{i=1}^{n}yᵢ - m\sum_{i=1}^{n}xᵢ - nb)$
+
+$0 = \sum_{i=1}^{n}yᵢ - m\sum_{i=1}^{n}xᵢ - nb$
+
+$0 = {1 \over n} \sum_{i=1}^{n}yᵢ - {m \over n}\sum_{i=1}^{n}xᵢ - b$
+
+$b = {1 \over n} \sum_{i=1}^{n}yᵢ - {m \over n}\sum_{i=1}^{n}xᵢ$
+
+We know that we can define the mean as:
+
+$\overline x = {1 \over n} \sum_{i=1}^{n}xᵢ$
+
+Using this definition, we can simplify our expression for b to:
+
+$b = {1 \over n} \sum_{i=1}^{n}yᵢ - {m \over n}\sum_{i=1}^{n}xᵢ$
+
+$b = {\overline y} - m{\overline x}$
+
+This gives us a clean expression for `b` using just our sample means. Now let's try to do the same for m.
+
+${∂D \over ∂m} = {∂ \over ∂b}\sum_{i=1}^{n}(yᵢ - mxᵢ - b)²$
+
+${∂D \over ∂m} = \sum_{i=1}^{n}(-2xᵢ(yᵢ - mxᵢ - b)$
+
+${∂D \over ∂m} = -2 \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - bxᵢ)$
+
+Now we want to solve for the value of `m` that minimizes D by solving for m when the partial is zero:
+
+${∂D \over ∂m} = -2 \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - bxᵢ)$
+
+$0 = -2 \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - bxᵢ)$
+
+$0 = \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - bxᵢ)$
+
+We already know the value of b:
+
+$b = {\overline y} - m{\overline x}$
+
+We can replace this in our expression:
+
+$0 = \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - xᵢ({\overline y} - m{\overline x}))$
+
+We can then simplify to use means as often as possible:
+
+$0 = \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - xᵢ({1 \over n} \sum_{i=1}^{n}yᵢ - m{1 \over n} \sum_{i=1}^{n}xᵢ))$
+
+
+-----
+
+$0 = \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - bxᵢ)$
+
+$0 = \sum_{i=1}^{n}(xᵢ(yᵢ - mxᵢ - b)$
+
+$0 = \sum_{i=1}^{n}{xᵢ \over n}(nyᵢ - nmxᵢ - nb)$
+
+$0 = {\overline x}\sum_{i=1}^{n}(nyᵢ - nmxᵢ - nb)$
+
+$0 = n{\overline x}\sum_{i=1}^{n}(yᵢ - mxᵢ - b)$
+
+$0 = n{\overline x} ( \sum_{i=1}^{n}yᵢ - \sum_{i=1}^{n}mxᵢ - \sum_{i=1}^{n}b )$
+
+$0 = n{\overline x} ( {\overline y} - m{\overline x} - nb )$
+
+We already know the value of b:
+
+$b = {\overline y} - m{\overline x}$
+
+$0 = n{\overline x} ( {\overline y} - m{\overline x} - n({\overline y} - m{\overline x}) )$
+
+$0 = n{\overline x} ( {\overline y} - m{\overline x} - n{\overline y} - nm{\overline x} )$
+
+$0 = n{\overline x}{\overline y} - mn{\overline x}² - n²{\overline x}{\overline y} - n²m{\overline x}² $
+
+
 Part B
 ------
 
 > Find variance of x and variance of y. Please write your whole solution.
+
 
 2. In the following table, x represents number of the years that an employee works in a company
 and y represent his/her salary.
