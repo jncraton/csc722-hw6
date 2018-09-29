@@ -7,8 +7,8 @@ Problem 1
 > In the following table, xi represents the score for the math class and yi represents the score for English class.
 
 ```python
-Xi = [95,85,80,70,60]
-yi = [85,95,70,65,70]
+x = [95,85,80,70,60]
+y = [85,95,70,65,70]
 ```
 
 Part A
@@ -101,6 +101,109 @@ This is a correct expression for `m`, but we can convert it to a more intuitive 
 $\sum_{i=1}^{n}{\overline x}² - xᵢ{\overline x} = 0$
 
 $\sum_{i=1}^{n}{\overline x}{\overline y} - yᵢ{\overline x} = 0$
+
+Adding these to our previous expression, we can create:
+
+$m = {\sum_{i=1}^{n}xᵢyᵢ - n{\overline x}{\overline y} \over \sum_{i=1}^{n}xᵢ² - n{\overline x}²}$
+
+$m = {\sum_{i=1}^{n}xᵢyᵢ - n{\overline x}{\overline y} + \sum_{i=1}^{n}{\overline x}{\overline y} - yᵢ{\overline x} \over \sum_{i=1}^{n}xᵢ² - n{\overline x}² + \sum_{i=1}^{n}{\overline x}² - xᵢ{\overline x}}$
+
+This can then factor to:
+
+$m = {{1 \over n}\sum_{i=1}^{n}(xᵢ - {\overline x})(yᵢ - {\overline y}) \over {1 \over n}\sum_{i=1}^{n}(xᵢ² - {\overline x})²}$
+
+$m = {\sum_{i=1}^{n}(xᵢ - {\overline x})(yᵢ - {\overline y}) \over \sum_{i=1}^{n}(xᵢ² - {\overline x})²}$
+
+Noting the definitions for variance and covariance:
+
+$Cov(x,y) = {\sum_{i=1}^{n}(xᵢ - {\overline x})(yᵢ - {\overline y}) \over n}$
+
+$Var(x) = {\sum_{i=1}^{n}(xᵢ² - {\overline x}) \over n}$
+
+We can also write `m` as:
+
+$m = {Cov(x,y) \over Var(x)}$
+
+Now we can put all of this derivation to use to create functions to perform linear regression for us.
+
+```python
+def mean(x):
+  """ Returns the mean of a list of numbers
+  
+  >>> mean([1,2,3])
+  2.0
+  >>> mean([1,1,1])
+  1.0
+  """
+
+  return sum(x)/len(x)
+
+def cov(x,y):
+  """ Returns the variance of a list
+
+  >>> cov([2,3,4],[3,4,6])
+  1.0
+  """
+  
+  return sum([(xᵢ - mean(x))*(yᵢ - mean(y)) for xᵢ,yᵢ in zip(x,y)]) / len(x)
+
+def var(x):
+  """ Returns the variance of a list
+
+  >>> var([2,3,4])
+  0.6666666666666666
+  """
+  
+  # This could alternatively simply return `cov(x,x)`
+  return sum([(xᵢ - mean(x))**2 for xᵢ in x]) / len(x)
+```
+
+```python
+def lin_reg(x,y):
+  """ Returns linear regression coefficients m and b for two lists of numbers
+  """
+
+  m = cov(x,y) / var(x)
+  b = mean(y) - m * mean(x)
+
+  return((m,b))
+
+def pretty_lin_reg(x,y):
+  m,b = lin_reg(x,y)
+
+  return "y = %.06fx + %.06f" % (m,b)
+```
+
+Now we can calculate our linear regression equation:
+
+```python
+print(pretty_lin_reg(x,y))
+```
+
+Let's check our work using numpy:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+m,b = np.polyfit(x, y, 1)
+print(m,b)
+```
+
+And graph our result just for fun:
+
+```python
+def plot_lin_reg(x,y):
+  m,b = lin_reg(x,y)
+
+  print(x,y)
+  
+  plt.scatter(x, y,  color='black')
+  plt.plot(x, y, 'yo', x, np.poly1d((m,b)), '--k')
+  plt.show()
+
+plot_lin_reg(x,y)
+```
 
 Part B
 ------
