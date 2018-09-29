@@ -82,37 +82,25 @@ We can replace this in our expression:
 
 $0 = \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - xᵢ({\overline y} - m{\overline x}))$
 
-We can then simplify to use means as often as possible:
+Then solve for `m`:
 
-$0 = \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - xᵢ({1 \over n} \sum_{i=1}^{n}yᵢ - m{1 \over n} \sum_{i=1}^{n}xᵢ))$
+$0 = \sum_{i=1}^{n}((xᵢyᵢ - xᵢ({\overline y} - mxᵢ² - m{\overline x}))$
 
+$0 = \sum_{i=1}^{n}((xᵢyᵢ - xᵢ({\overline y} - m(xᵢ² - {\overline x})))$
 
------
+$\sum_{i=1}^{n}m(xᵢ² - {\overline x}) = \sum_{i=1}^{n}(xᵢyᵢ - xᵢ{\overline y})$
 
-$0 = \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - bxᵢ)$
+$m\sum_{i=1}^{n}(xᵢ² - {\overline x}) = \sum_{i=1}^{n}(xᵢyᵢ - xᵢ{\overline y})$
 
-$0 = \sum_{i=1}^{n}(xᵢ(yᵢ - mxᵢ - b)$
+$m = {\sum_{i=1}^{n}(xᵢyᵢ - xᵢ{\overline y}) \over \sum_{i=1}^{n}(xᵢ² - {\overline x})}$
 
-$0 = \sum_{i=1}^{n}{xᵢ \over n}(nyᵢ - nmxᵢ - nb)$
+$m = {\sum_{i=1}^{n}xᵢyᵢ - n{\overline x}{\overline y} \over \sum_{i=1}^{n}xᵢ² - n{\overline x}²}$
 
-$0 = {\overline x}\sum_{i=1}^{n}(nyᵢ - nmxᵢ - nb)$
+This is a correct expression for `m`, but we can convert it to a more intuitive form using a couple of carefully selected identities. [[1]](http://seismo.berkeley.edu/~kirchner/eps_120/Toolkits/Toolkit_10.pdf)
 
-$0 = n{\overline x}\sum_{i=1}^{n}(yᵢ - mxᵢ - b)$
+$\sum_{i=1}^{n}{\overline x}² - xᵢ{\overline x} = 0$
 
-$0 = n{\overline x} ( \sum_{i=1}^{n}yᵢ - \sum_{i=1}^{n}mxᵢ - \sum_{i=1}^{n}b )$
-
-$0 = n{\overline x} ( {\overline y} - m{\overline x} - nb )$
-
-We already know the value of b:
-
-$b = {\overline y} - m{\overline x}$
-
-$0 = n{\overline x} ( {\overline y} - m{\overline x} - n({\overline y} - m{\overline x}) )$
-
-$0 = n{\overline x} ( {\overline y} - m{\overline x} - n{\overline y} - nm{\overline x} )$
-
-$0 = n{\overline x}{\overline y} - mn{\overline x}² - n²{\overline x}{\overline y} - n²m{\overline x}² $
-
+$\sum_{i=1}^{n}{\overline x}{\overline y} - yᵢ{\overline x} = 0$
 
 Part B
 ------
