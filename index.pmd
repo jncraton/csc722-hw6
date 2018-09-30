@@ -128,7 +128,8 @@ Now we can put all of this derivation to use to create functions to perform line
 
 ```python
 def mean(x):
-  """ Returns the mean of a list of numbers
+  """
+  Returns the mean of a list of numbers
   
   >>> mean([1,2,3])
   2.0
@@ -139,16 +140,20 @@ def mean(x):
   return sum(x)/len(x)
 
 def cov(x,y):
-  """ Returns the variance of a list
+  """
+  Returns the variance of a list
 
   >>> cov([2,3,4],[3,4,6])
   1.0
   """
+
+  E = mean
   
-  return sum([(xᵢ - mean(x))*(yᵢ - mean(y)) for xᵢ,yᵢ in zip(x,y)]) / len(x)
+  return E([(xᵢ - E(x))*(yᵢ - E(y)) for xᵢ,yᵢ in zip(x,y)])
 
 def var(x):
-  """ Returns the variance of a list
+  """
+  Returns the variance of a list
 
   >>> var([2,3,4])
   0.6666666666666666
@@ -160,7 +165,8 @@ def var(x):
 
 ```python
 def lin_reg(x,y):
-  """ Returns linear regression coefficients m and b for two lists of numbers
+  """ 
+  Returns linear regression coefficients m and b
   """
 
   m = cov(x,y) / var(x)
@@ -227,7 +233,17 @@ Problem 2
 
 > In the following table, x represents number of the years that an employee works in a company and y represent his/her salary.
 
-a. Find the linear regression for x and y. Please write your whole solution.
+Part A
+------
+
+> Find the linear regression for x and y. Please write your whole solution.
+
+We can simply reuse our derivations and functions from problem 1.
+
+```python
+lin_reg(x,y)
+```
+
 b. Find the variance of x and the variance of y. Please write your whole solution.
 x
 5
