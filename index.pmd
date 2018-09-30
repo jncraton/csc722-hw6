@@ -158,9 +158,11 @@ def var(x):
   >>> var([2,3,4])
   0.6666666666666666
   """
+
+  E = mean
   
   # This could alternatively simply return `cov(x,x)`
-  return sum([(xᵢ - mean(x))**2 for xᵢ in x]) / len(x)
+  return E([(xᵢ - E(x))**2 for xᵢ in x])
 ```
 
 ```python
