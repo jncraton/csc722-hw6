@@ -260,6 +260,14 @@ Part B
 
 > Find the variance of x and the variance of y. Please write your whole solution.
 
+```python
+var(x)
+```
+
+```python
+var(y)
+```
+
 Problem 3
 =========
 
