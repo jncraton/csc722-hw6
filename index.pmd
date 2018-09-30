@@ -141,7 +141,7 @@ def mean(x):
 
 def cov(x,y):
   """
-  Returns the variance of a list
+  Returns the covariance of a list
 
   >>> cov([2,3,4],[3,4,6])
   1.0
