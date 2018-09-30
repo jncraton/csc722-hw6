@@ -20,11 +20,11 @@ The idea of linear regression is to find a line of the following form:
 
 $y = mx + b$
 
-`m` and `b' should be found to minimize total distance between the dataset and the line.
+`m` and `b` should be found to minimize total distance between the dataset and the line.
 
 The square of the distance between each datapoint and the line can be represented as:
 
-$(yᵢ - mxᵢ - b)²$
+$D = (yᵢ - mxᵢ - b)²$
 
 The total distance would therefore be:
 
@@ -195,11 +195,9 @@ And graph our result just for fun:
 ```python
 def plot_lin_reg(x,y):
   m,b = lin_reg(x,y)
-
-  print(x,y)
   
   plt.scatter(x, y,  color='black')
-  plt.plot(x, y, 'yo', x, np.poly1d((m,b)), '--k')
+  plt.plot(x, y, 'yo', x, np.poly1d((m,b))(x), '--k')
   plt.show()
 
 plot_lin_reg(x,y)
@@ -210,9 +208,25 @@ Part B
 
 > Find variance of x and variance of y. Please write your whole solution.
 
+We discussed the definition of variance in part A as:
 
-2. In the following table, x represents number of the years that an employee works in a company
-and y represent his/her salary.
+$Var(x) = {\sum_{i=1}^{n}(xᵢ² - {\overline x}) \over n}$
+
+We can simply call the variance function that we created to compute regression coefficients to get our variances.
+
+```python
+var(x)
+```
+
+```python
+var(y)
+```
+
+Problem 2
+=========
+
+> In the following table, x represents number of the years that an employee works in a company and y represent his/her salary.
+
 a. Find the linear regression for x and y. Please write your whole solution.
 b. Find the variance of x and the variance of y. Please write your whole solution.
 x
