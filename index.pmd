@@ -127,13 +127,13 @@ $m = {Cov(x,y) \over Var(x)}$
 Now we can put all of this derivation to use to create functions to perform linear regression for us.
 
 ```python
-def mean(x):
+def E(x):
   """
   Returns the mean of a list of numbers
   
-  >>> mean([1,2,3])
+  >>> E([1,2,3])
   2.0
-  >>> mean([1,1,1])
+  >>> E([1,1,1])
   1.0
   """
 
@@ -147,8 +147,6 @@ def cov(x,y):
   1.0
   """
 
-  E = mean
-  
   return E([(xᵢ - E(x))*(yᵢ - E(y)) for xᵢ,yᵢ in zip(x,y)])
 
 def var(x):
@@ -159,8 +157,6 @@ def var(x):
   0.6666666666666666
   """
 
-  E = mean
-  
   # This could alternatively simply return `cov(x,x)`
   return E([(xᵢ - E(x))**2 for xᵢ in x])
 ```
@@ -169,10 +165,13 @@ def var(x):
 def lin_reg(x,y):
   """ 
   Returns linear regression coefficients m and b
+
+  >>> lin_reg([1,2,3],[2,4,6])
+  (2.0, 0.0)
   """
 
   m = cov(x,y) / var(x)
-  b = mean(y) - m * mean(x)
+  b = E(y) - m * E(x)
 
   return((m,b))
 
