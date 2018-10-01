@@ -40,7 +40,7 @@ ${∂D \over ∂b} = -2(\sum_{i=1}^{n}yᵢ - m\sum_{i=1}^{n}xᵢ - nb)$
 
 Now we want to find the minimum by solving for b when the above expression is zero:
 
-${∂D \over ∂m} = 0 = -2(\sum_{i=1}^{n}yᵢ - m\sum_{i=1}^{n}xᵢ - nb)$
+${∂D \over ∂b} = 0 = -2(\sum_{i=1}^{n}yᵢ - m\sum_{i=1}^{n}xᵢ - nb)$
 
 $0 = \sum_{i=1}^{n}yᵢ - m\sum_{i=1}^{n}xᵢ - nb$
 
@@ -62,9 +62,9 @@ This gives us a clean expression for `b` using just our sample means. Now let's 
 
 ${∂D \over ∂m} = {∂ \over ∂b}\sum_{i=1}^{n}(yᵢ - mxᵢ - b)²$
 
-${∂D \over ∂m} = \sum_{i=1}^{n}(-2xᵢ(yᵢ - mxᵢ - b)$
+${∂D \over ∂m} = \sum_{i=1}^{n}-2xᵢ(yᵢ - mxᵢ - b)$
 
-${∂D \over ∂m} = -2 \sum_{i=1}^{n}((xᵢyᵢ - mxᵢ² - bxᵢ)$
+${∂D \over ∂m} = -2 \sum_{i=1}^{n}(xᵢyᵢ - mxᵢ² - bxᵢ)$
 
 Now we want to solve for the value of `m` that minimizes D by solving for m when the partial is zero:
 
